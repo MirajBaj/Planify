@@ -10,7 +10,7 @@
   <h1>User Management</h1>
   <table border="1" id="userTable">
     <thead>
-      <tr><th>ID</th><th>Name</th><th>Age</th><th>Action</th></tr>
+      <tr><th>ID</th><th>Name</th><th>Email</th><th>Action</th></tr>
     </thead>
     <tbody></tbody>
   </table>
@@ -25,10 +25,10 @@
           users.forEach(user => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-              <td>${user.id}</td>
-              <td>${user.name}</td>
-              <td>${user.age}</td>
-              <td><button onclick="deleteUser(${user.id})">Delete</button></td>
+              <td>${user.user_id}</td>
+              <td>${user.username}</td>
+              <td>${user.email}</td>
+              <td><button onclick="deleteUser(${user.user_id})">Delete</button></td>
             `;
             tbody.appendChild(tr);
           });

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $input = json_decode(file_get_contents('php://input'), true);
     $id = $input['id'] ?? null;
     if ($id) {
-        $stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
+        $stmt = $pdo->prepare('DELETE FROM users WHERE user_id = ?');
         $stmt->execute([$id]);
         echo json_encode(['success' => true]);
     } else {

@@ -1,109 +1,289 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #c9d4cb;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #c9d6cb;
 }
+
 .container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
 }
+
 .sidebar {
-  width: 180px;
-  background: #e6ece7;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  border-radius: 20px;
-  margin: 12px;
+  background: #f3f5f2;
+  width: 260px;
+  border-radius: 24px;
+  margin: 16px 0 16px 8px; /* reduced left margin */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 0;
-  min-width: 140px;
+  padding: 32px 0 24px 0;
 }
+
 .logo {
-  margin-bottom: 40px;
-  font-size: 1.2em;
-  color: #a3b6a7;
-  font-weight: bold;
-  text-align: center;
-  letter-spacing: 2px;
+  margin-bottom: 32px;
 }
+
 .menu {
-  flex: 1;
   width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
 }
 .menu-item {
   display: flex;
   align-items: center;
-  padding: 12px 24px;
+  font-size: 1.2rem;
   color: #222;
   text-decoration: none;
-  font-size: 1.1em;
-  border-radius: 8px;
+  padding: 12px 32px;
+  border-radius: 12px;
+  margin: 0;
+  transition: background 0.2s, color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.menu-item:not(:last-child) {
   margin-bottom: 8px;
-  transition: background 0.2s;
 }
 .menu-item:hover {
-  background: #dbe5dd;
+  background: #e0e7de;
+  color: #2b7a4b;
 }
-.logout {
-  margin-bottom: 0;
-  margin-top: auto;
-  padding: 12px 24px;
-  color: #222;
-  text-decoration: none;
-  font-size: 1em;
-  border-radius: 8px;
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.1em;
+  color: #256029;
   display: flex;
   align-items: center;
-  transition: background 0.2s;
+  transition: color 0.2s;
+  min-width: 22px;
+  justify-content: center;
+}
+.menu-item:hover .nav-icon {
+  color: #388e3c;
+}
+.logout {
+  margin-top: auto;
+  color: #111;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 16px 32px;
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
 }
 .logout:hover {
-  background: #dbe5dd;
+  background: #e0e7de;
+  color: #b00020;
 }
+
 .main-content {
   flex: 1;
-  padding: 60px 40px;
+  padding: 32px 16px 32px 16px; /* reduced left and right padding */
+  display: flex;
+  flex-direction: column;
 }
-h1 {
-  font-size: 2.5em;
+.greeting {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 18px;
+  margin-left: 40px;
+}
+.greeting h1 {
+  font-size: 2.8rem;
   color: #fff;
+  margin: 0;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 0.8fr; /* make left (task) wider, right (notes) smaller */
+  grid-template-rows: 1fr 1fr;
+  gap: 32px;
+  height: 100%;
+  padding: 8px;
 }
-th, td {
-  padding: 12px 16px;
-  text-align: left;
+.my-task-card, .notes-card, .my-task-summary-card {
+  margin: 0;
+  /* Remove min-width for better responsiveness */
 }
-th {
-  background: #e6ece7;
+.my-task-card {
+  grid-row: 1 / span 2;
+  background: #f3f5f2;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 32px 28px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  min-width: 420px; /* wider for long titles */
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #222;
-  font-weight: 600;
 }
-tr:not(:last-child) {
-  border-bottom: 1px solid #e6ece7;
-}
-button {
-  background: #c9d4cb;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 16px;
-  color: #222;
-  font-size: 1em;
+.card-add {
+  font-size: 2rem;
+  color: #b0b0b0;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: color 0.2s;
 }
-button:hover {
-  background: #a3b6a7;
+.card-add:hover {
+  color: #2b7a4b;
+}
+.task-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.filter-btn {
+  background: #e0e7de;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  color: #222;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: #b7d2c2;
+  color: #2b7a4b;
+}
+.task-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.task-item {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  min-height: 60px;
+}
+.task-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+}
+.task-desc {
+  font-size: 0.95rem;
+  color: #888;
+}
+.task-date {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+}
+.task-priority {
+  /* Remove absolute positioning and center vertically */
+  position: static;
+  margin-left: auto;
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  text-align: center;
+}
+.task-priority.medium {
+  background: #bfa46f;
+}
+.task-priority.personal {
+  background: #a59be6;
+}
+.task-priority.work {
+  background: #7fd8b3;
+}
+
+.notes-card {
+  background: #f3f5f2;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 28px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px; /* smaller notes card */
+  min-height: 160px;
+}
+.notes-list {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+.note-placeholder {
+  background: #dedede;
+  border-radius: 18px;
+  width: 120px;
+  height: 120px;
+}
+
+.my-task-summary-card {
+  background: #f3f5f2;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 28px 24px 24px 24px;
+  min-width: 320px;
+  min-height: 180px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .my-task-card, .notes-card, .my-task-summary-card {
+    min-width: unset;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    margin: 0 0 16px 0;
+    border-radius: 0 0 24px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .main-content {
+    padding: 16px;
+  }
+  .dashboard-grid {
+    gap: 16px;
+  }
 }

@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 session_start();
 require_once 'database.php';
 
-// --- TEMP: No login required, always use user_id = 1 for testing ---
+
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['user_id'] = 1;
 }
@@ -288,6 +288,22 @@ if (isset($_GET['success'])) {
             accent-color: #2563eb;
             margin-right: 10px;
         }
+        .sidebar nav ul li a.add-task-link,
+        .sidebar nav ul li a.add-task-link svg {
+            color: #222 !important;
+            stroke: #222 !important;
+            background: none !important;
+            box-shadow: none !important;
+            font-weight: 500;
+            transition: color 0.2s, stroke 0.2s, background 0.2s;
+        }
+
+        .sidebar nav ul li a.add-task-link:hover,
+        .sidebar nav ul li a.add-task-link:focus {
+            color: #2563eb !important;
+            stroke: #2563eb !important;
+            background: #e7ece3 !important;
+        }
         @media (max-width: 1100px) {
             .main-flex { flex-direction: column; gap: 0; }
             .right-cards { flex-direction: row; gap: 16px; margin-top: 24px; }
@@ -302,16 +318,14 @@ if (isset($_GET['success'])) {
 <body>
     <div class="sidebar">
         <div>
-            <div class="logo">
-                <img src="https://i.imgur.com/0y8Ftya.png" alt="Planify Logo">
-                <div class="brand">PLANIFY</div>
-                <div class="tagline">Plan. Focus. Win.</div>
-            </div>
+        <div class="logo">
+        <img src="planify.png" alt="Planify Logo" style="width:100px; display:block; margin: 0 auto 10px auto;">
+      </div>
             <nav>
                 <ul>
                     <li><span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>Dashboard</span></li>
                     <li><span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg>User Profile</span></li>
-                    <li><a href="newTask.php" class="active"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>+ Add Task</a></li>
+                    <li><a href="newTask.php" class="add-task-link"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Task</a></li>
                 </ul>
             </nav>
         </div>
@@ -378,7 +392,7 @@ if (isset($_GET['success'])) {
         </div>
     </div>
     <script>
-    // Sync radio selection to hidden fields for form submission
+    
     document.querySelectorAll('input[name="category_radio"]').forEach(function(radio) {
         radio.addEventListener('change', function() {
             document.getElementById('hidden_category_id').value = this.value;
@@ -389,7 +403,7 @@ if (isset($_GET['success'])) {
             document.getElementById('hidden_status').value = this.value;
         });
     });
-    // Set default if not set
+    
     if (!document.querySelector('input[name="category_radio"]:checked')) {
         var firstCat = document.querySelector('input[name="category_radio"]');
         if (firstCat) {

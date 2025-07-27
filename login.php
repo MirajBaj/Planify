@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Planify</title>
-  <link rel="stylesheet" href="/Planify1/CSS/login.css">
+  <link rel="stylesheet" href="/Planify/CSS/login.css">
   <!-- Prevent caching of login page -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">

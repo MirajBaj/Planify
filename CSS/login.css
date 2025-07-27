@@ -162,6 +162,24 @@ body {
   content: "\2713";
 }
 
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+.password-wrapper .login-input {
+  width: 100%;
+  padding-right: 40px; /* Make space for the icon */
+  box-sizing: border-box;
+}
+#togglePassword {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 2;
+}
+
 @media (max-width: 900px) {
   .login-container {
     width: 40vw;

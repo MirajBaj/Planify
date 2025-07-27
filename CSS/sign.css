@@ -100,13 +100,14 @@ body {
   color: #333;
   flex-direction: row;
   display: flex;
-  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: 0.3rem;
+  flex-wrap: wrap;
 }
 .login-link {
   font-size: large;
+  flex-wrap: wrap;
   color: #3576e7;
   text-decoration: none;
   font-weight: 600;

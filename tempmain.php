@@ -20,7 +20,7 @@
         <a href="#" class="menu-item"><span class="nav-icon">&#128100;</span> User Profile</a>
         <a href="#" class="menu-item"><span class="nav-icon">&#43;</span> Add Task</a>
       </div>
-      <a href="#" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
+      <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>
     <div class="main-content">
       <?php

@@ -13,7 +13,7 @@ if (isset($_SESSION['signup_success'])) {
 
 // Check if user is already logged in, but allow signup redirect to show login form
 if (empty($signupSuccessMsg) && isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: dashboard.php");
+    header("Location: tempmain.php");
     exit;
 }
 
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($emailErr) && empty($passwordErr)) {
             try {
                 // Query database for user
-                $stmt = $pdo->prepare("SELECT user_id, username, email, password, role, created_at FROM users WHERE email = ?");
+                $stmt = $pdo->prepare("SELECT user_id, username, email, password, created_at FROM users WHERE email = ?");
                 $stmt->execute([$email]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["user_id"] = $user['user_id'];
                     $_SESSION["username"] = $user['username'];
                     $_SESSION["email"] = $user['email'];
-                    $_SESSION["role"] = $user['role'] ?? 'user'; // Default role if not set
+                    //$_SESSION["role"] = $user['role'] ?? 'user'; // Default role if not set
                     $_SESSION["login_time"] = time();
                     
                     // Clear failed login attempts
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     error_log("Successful login for user: " . $user['email'] . " from IP: " . $ip_address);
                     
                     // Redirect to dashboard or intended page
-                    $redirect_url = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : 'dashboard.php';
+                    $redirect_url = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : 'tempmain.php';
                     unset($_SESSION['redirect_after_login']);
                     
                     header("Location: " . $redirect_url);

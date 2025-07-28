@@ -227,7 +227,7 @@ body {
 }
 
 .form-actions button {
-  background: #aab8a6;
+  background: #6d9e60;
   color: #fff;
   border: none;
   padding: 16px 48px;
@@ -245,7 +245,7 @@ body {
 }
 
 .form-actions button:hover:not(.cancel) {
-  background: #8fa18b;
+  background: #8ebf84;
 }
 
 
@@ -302,7 +302,7 @@ body {
 }
 
 .right-card input[type="radio"] {
-  accent-color: #aab8a6;
+  accent-color: #6d9e60;
   margin-right: 10px;
 }
 
@@ -314,8 +314,8 @@ body {
 
 /* For Firefox */
 .right-card input[type="radio"]:checked {
-  background-color: #aab8a6;
-  border-color: #aab8a6;
+  background-color: #6d9e60;
+  border-color: #6d9e60;
 }
 
 

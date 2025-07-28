@@ -99,59 +99,6 @@ $username = $user_stmt->fetchColumn();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
-    <style>
-        .delete-button {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0;
-            margin-left: 8px;
-            opacity: 1;
-        }
-        
-        .high-task-bullet {
-            display: flex;
-            align-items: center;
-            background: none;
-            border: none;
-            padding: 8px 0;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            font-family: inherit;
-            justify-content: space-between;
-        }
-        
-        .task-content {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            cursor: pointer;
-        }
-        
-        .task-actions {
-            display: flex;
-            align-items: center;
-        }
-        
-        .high-priority-list-divs {
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-        
-        .high-priority-list-divs::-webkit-scrollbar {
-            width: 0;
-            background: transparent;
-        }
-        
-        .high-priority-list-divs {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-    </style>
 </head>
 <body>
   <div class="container">
@@ -162,15 +109,21 @@ $username = $user_stmt->fetchColumn();
       <div class="menu">
         <a href="tempmain.php" class="menu-item <?php echo $filter === 'all' ? 'active' : ''; ?>"><span class="nav-icon">&#9632</span> Dashboard</a>
         <a href="#" class="menu-item"><span class="nav-icon">&#128100;</span> User Profile</a>
-        <a href="newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> Add Task</a>
+        <a href="./Task/addnote.php" class="menu-item"><span class="nav-icon">&#43;</span> My Notes</a>
       </div>
       <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>
     <div class="main-content">
       <?php if (isset($_GET['success'])): ?>
-        <div class="success-message" style="background: #d4edda; color: #155724; padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
+        <div id="successNotification" class="success-notification">
           Task added successfully!
         </div>
+        <script>
+          setTimeout(function() {
+            var notif = document.getElementById('successNotification');
+            if (notif) notif.style.display = 'none';
+          }, 3000);
+        </script>
       <?php endif; ?>
       
       <div class="greeting">
@@ -180,7 +133,7 @@ $username = $user_stmt->fetchColumn();
         <div class="my-task-card">
           <div class="card-header">
             <span class="card-title">My Task</span>
-            <span class="card-add">+</span>
+            <span class="card-add" id="addTaskBtn">+</span>
           </div>
           <div class="task-filters">
             <a href="?filter=all<?php echo $current_page > 1 ? '&page=' . $current_page : ''; ?>" class="filter-btn <?php echo $filter === 'all' ? 'active' : ''; ?>">All</a>
@@ -251,16 +204,12 @@ $username = $user_stmt->fetchColumn();
                 } else {
                   foreach ($high_tasks as $htask) {
                     echo '<div class="high-task-bullet" data-task-id="' . $htask['task_id'] . '">';
-                    echo '<div class="task-content" onclick="deleteHighPriorityTask(' . $htask['task_id'] . ')">';
+                    echo '<div class="task-content">';
                     echo '<span class="bullet-icon">•</span>';
                     echo '<span class="task-text">' . htmlspecialchars($htask['title']) . '</span>';
                     echo '</div>';
                     echo '<div class="task-actions">';
-                    echo '<form method="POST" style="display: inline-block; margin: 0;">';
-                    echo '<input type="hidden" name="delete_high_task" value="1">';
-                    echo '<input type="hidden" name="task_id" value="' . $htask['task_id'] . '">';
-                    echo '<button type="submit" class="delete-button">×</button>';
-                    echo '</form>';
+                    echo '<span class="task-delete" onclick="deleteHighPriorityTask(' . $htask['task_id'] . ')" title="Delete task">×</span>';
                     echo '</div>';
                     echo '</div>';
                   }
@@ -288,6 +237,14 @@ $username = $user_stmt->fetchColumn();
 <script>
   // Function to delete high priority task
   function deleteHighPriorityTask(taskId) {
+    // Prevent event bubbling
+    event.stopPropagation();
+    
+    // Confirm deletion
+    if (!confirm('Are you sure you want to delete this task?')) {
+      return;
+    }
+    
     const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
     
     // Send AJAX request to delete the task
@@ -301,15 +258,21 @@ $username = $user_stmt->fetchColumn();
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        // Remove the task element from DOM
+        // Remove the task element from DOM with fade effect
         if (taskElement) {
-          taskElement.remove();
+          taskElement.style.opacity = '0';
+          taskElement.style.transform = 'translateX(-20px)';
+          taskElement.style.transition = 'all 0.3s ease';
           
-          // Check if there are any remaining tasks
-          const remainingTasks = document.querySelectorAll('.high-task-bullet');
-          if (remainingTasks.length === 0) {
-            document.getElementById('highPriorityList').innerHTML = '<div class="no-high-task">No high priority tasks</div>';
-          }
+          setTimeout(() => {
+            taskElement.remove();
+            
+            // Check if there are any remaining tasks
+            const remainingTasks = document.querySelectorAll('.high-task-bullet');
+            if (remainingTasks.length === 0) {
+              document.getElementById('highPriorityList').innerHTML = '<div class="no-high-task">No high priority tasks</div>';
+            }
+          }, 300);
         }
       } else {
         alert('Error deleting task: ' + (data.error || 'Unknown error'));
@@ -342,6 +305,16 @@ $username = $user_stmt->fetchColumn();
       document.getElementById('taskModal').style.display = 'none';
     }
   };
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var addBtn = document.getElementById('addTaskBtn');
+  if (addBtn) {
+    addBtn.addEventListener('click', function() {
+      window.location.href = 'newTask.php';
+    });
+  }
+});
 </script>
 </body>
 </html>

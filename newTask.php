@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="hidden" name="status" id="hidden_status" value="<?= htmlspecialchars($selected_status) ?>">
                     <div class="form-actions">
                         <button type="submit">Save Task</button>
-                        <button type="button" class="cancel" onclick="window.location.href='dashboard.php'">Cancel</button>
+                        <button type="button" class="cancel" onclick="window.location.href='tempmain.php'">Cancel</button>
                     </div>
                 </form>
             </div>

@@ -214,6 +214,14 @@ body {
     font-family: inherit;
 }
 
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #8ebf84;
+  box-shadow: 0 0 0 3px rgba(142, 191, 132, 0.15);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 70px;
@@ -380,6 +388,10 @@ body {
   min-height: 150px;
   flex: none;
   height: auto;
+}
+
+.greeting h1 {
+  color: #000;
 }
 
 

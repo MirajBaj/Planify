@@ -82,6 +82,19 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Fetch user's notes
+$notes_sql = "SELECT * FROM notes WHERE user_id = ? ORDER BY created_at DESC LIMIT 4";
+$notes_stmt = $pdo->prepare($notes_sql);
+$notes_stmt->execute([$user_id]);
+$notes = $notes_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch user's notes
+$notes_sql = "SELECT * FROM notes WHERE user_id = ? ORDER BY created_at DESC LIMIT 4";
+$notes_stmt = $pdo->prepare($notes_sql);
+$notes_stmt->execute([$user_id]);
+$notes = $notes_stmt->fetchAll(PDO::FETCH_ASSOC);
+$username = $user_data['username'] ?? 'User';
+
 // Get username
 $user_sql = "SELECT username FROM users WHERE user_id = ?";
 $user_stmt = $pdo->prepare($user_sql);
@@ -104,7 +117,7 @@ $username = $user_stmt->fetchColumn();
   <div class="container">
     <div class="sidebar">
       <div class="logo">
-        <img src="planify.png" alt="Planify Logo" style="width:100px; display:block; margin: 0 auto 10px auto;">
+        <img src="planify.png" alt="Planify Logo" style="width:150px; display:block; margin: 0 auto 10px auto;">
       </div>
       <div class="menu">
         <a href="tempmain.php" class="menu-item <?php echo $filter === 'all' ? 'active' : ''; ?>"><span class="nav-icon">&#9632</span> Dashboard</a>
@@ -182,11 +195,25 @@ $username = $user_stmt->fetchColumn();
         <div class="notes-card">
           <div class="card-header">
             <span class="card-title">My Notes</span>
-            <span class="card-add">+</span>
+            <a href="Task/addnote.php" class="card-add">+</a>
           </div>
           <div class="notes-list">
-            <div class="note-placeholder"></div>
-            <div class="note-placeholder"></div>
+            <?php if (empty($notes)): ?>
+              <div class="note-placeholder" style="text-align: center; color: #666; padding: 40px 20px;">
+                <div>No notes yet. Click the + button to add your first note!</div>
+              </div>
+            <?php else: ?>
+              <?php foreach (array_slice($notes, 0, 2) as $note): ?>
+                <div class="note-item" style="background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); min-width: 180px; max-width: 220px;">
+                  <div class="note-title" style="font-weight: 600; font-size: 1.1rem; color: #333; margin-bottom: 8px; word-break: break-word; "><?php echo htmlspecialchars($note['title']); ?></div>
+                  <div class="note-content" style="color: #666; font-size: 0.9rem; margin-bottom: 8px; line-height: 1.4; word-break: break-word; "><?php echo htmlspecialchars($note['content']); ?></div>
+                  <div class="note-date" style="color: #999; font-size: 0.8rem;"> <?php echo date('d M, Y', strtotime($note['created_at'])); ?></div>
+                </div>
+              <?php endforeach; ?>
+              <?php if (count($notes) > 2): ?>
+                <a href="allnotes.php" style="display: flex; align-items: center; justify-content: center; min-width: 80px; height: 100px; background: #f3f5f2; border-radius: 12px; color: #2563eb; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-left: 8px;">More &rarr;</a>
+              <?php endif; ?>
+            <?php endif; ?>
           </div>
         </div>
         <div class="my-task-summary-card">

@@ -12,49 +12,49 @@ if (session_status() == PHP_SESSION_NONE) {
   <title>Add a Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="../adminstyle.css" />
+  <link rel="stylesheet" href="../style.css?v=<?php echo time(); ?>" />
 </head>
 <body>
 <div class="container">
   <div class="sidebar">
     <div class="logo">
-      <img src="../planify.png" alt="Planify Logo" style="width:100px; display:block; margin: 0 auto 10px auto;" />
+      <img src="../planify.png" alt="Planify Logo" style="width:150px; display:block; margin: 0 auto 10px auto;" />
     </div>
     <div class="menu">
-      <a href="#" class="menu-item">&#9632; Dashboard</a>
-      <a href="#" class="menu-item">&#x1F464; User Profile</a>
-      <a href="addtask.php" class="menu-item">&#x2795; Add Task</a>
+      <a href="../tempmain.php" class="menu-item"><span class="nav-icon">&#9632;</span> Dashboard</a>
+      <a href="../newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> All Task</a>
+      <a href="../allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
     </div>
-    <a href="#" class="logout">&#x21B6; Logout</a>
+    <a href="../logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
   </div>
   <div class="main-content">
     <h1>Add a Note</h1>
-    <div style="background: #fff; padding: 20px; border-radius: 10px; width: 400px;">
-      <form id="taskForm">
-        <label>Task Title</label><br />
-        <input type="text" id="title" required style="width: 100%; padding: 8px; margin-bottom: 10px;" /><br />
-        <label>Description</label><br />
-        <textarea id="description" rows="4" style="width: 100%; padding: 8px;"></textarea><br />
-        <button type="submit" style="background: #4a90e2; color: white; margin-top: 10px;">Save Task</button>
-        <button type="button" onclick="document.getElementById('taskForm').reset();" style="background: gray; color: white; margin-left: 10px;">Cancel</button>
+    <div style="background: #fff; padding: 32px; border-radius: 16px; width: 600px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+      <form id="noteForm">
+        <label style="font-size: 1.2rem; margin-bottom: 8px;">Note Title</label><br />
+        <input type="text" id="title" required style="width: 100%; padding: 14px; margin-bottom: 18px; font-size: 1.1rem; border-radius: 8px; border: 1px solid #ccc;" /><br />
+        <label style="font-size: 1.2rem; margin-bottom: 8px;">Note Content</label><br/>
+        <textarea id="description" rows="7" style="width: 100%; padding: 14px; font-size: 1.05rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 18px;"></textarea><br />
+        <button type="submit" style="background: #4a90e2; color: white; margin-top: 10px; font-size: 1.1rem; padding: 12px 32px; border-radius: 8px;">Save Note</button>
+        <button type="button" onclick="document.getElementById('noteForm').reset();" style="background: gray; color: white; margin-left: 16px; font-size: 1.1rem; padding: 12px 32px; border-radius: 8px;">Cancel</button>
       </form>
     </div>
   </div>
 </div>
 
 <script>
-  document.getElementById('taskForm').addEventListener('submit', function (e) {
+  document.getElementById('noteForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
 
-    axios.post('http://localhost/GroupProject/Task/task.php', {
+    axios.post('http://localhost/planify/Task/note.php', {
       title,
       description
     }).then(res => {
       if (res.data.success) {
-        alert('Task added successfully!');
-        document.getElementById('taskForm').reset();
+        alert('Note added successfully!');
+        document.getElementById('noteForm').reset();
       } else {
         alert('Error: ' + res.data.error);
       }

@@ -17,8 +17,8 @@
             <nav>
                 <ul>
                     <li><span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>Dashboard</span></li>
-                    <li><span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7.5 7.5 0 0 1 13 0"/></svg>User Profile</span></li>
                     <li><a href="newTask.php" class="add-task-link"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Task</a></li>
+                    <li><a href="Task/addnote.php" class="menu-item"><span class="nav-icon">&#128221;</span> Add Notes</a></li>
                 </ul>
             </nav>
         </div>

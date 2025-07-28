@@ -1,46 +1,45 @@
 <?php
-require('../db.php'); // Make sure this creates $pdo as PDO instance
+header('Content-Type: application/json');
+require '../db.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
+// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'error' => 'User not logged in']);
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
-
-header('Content-Type: application/json');
-
-// Get JSON input
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (!$data || !isset($data['title']) || trim($data['title']) === '') {
-    echo json_encode(['success' => false, 'error' => 'Task title is required']);
+// Check if it's a POST request
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo json_encode(['success' => false, 'error' => 'Invalid request method']);
     exit;
 }
 
+// Get POST data
+$input = json_decode(file_get_contents('php://input'), true);
+$title = trim($input['title'] ?? '');
+$description = trim($input['description'] ?? '');
 
-$title = trim($data['title']);
-$description = isset($data['description']) ? trim($data['description']) : '';
+// Validate input
+if (empty($title)) {
+    echo json_encode(['success' => false, 'error' => 'Title is required']);
+    exit;
+}
 
 try {
-    // Prepare statement with placeholders
-    $stmt = $pdo->prepare("INSERT INTO tasks (title, description) VALUES (:title, :description)");
-
-    // Bind parameters
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':description', $description);
-    $stmt = $pdo->prepare("INSERT INTO tasks (title, description, user_id) VALUES (:title, :description, :user_id)");
-
-
-    // Execute query
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
+    // Insert note into database
+    $sql = "INSERT INTO notes (user_id, title, content, created_at) VALUES (?, ?, ?, NOW())";
+    $stmt = $pdo->prepare($sql);
+    
+    if ($stmt->execute([$_SESSION['user_id'], $title, $description])) {
+        echo json_encode(['success' => true, 'message' => 'Note added successfully']);
     } else {
-        echo json_encode(['success' => false, 'error' => 'Failed to save task']);
+        echo json_encode(['success' => false, 'error' => 'Failed to add note']);
     }
 } catch (PDOException $e) {
-    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+    echo json_encode(['success' => false, 'error' => 'Database error: ' . $e->getMessage()]);
 }
+?>

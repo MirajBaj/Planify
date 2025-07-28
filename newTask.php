@@ -1,4 +1,4 @@
-<?php require_once 'data.php'; ?>
+<?php require_once 'data1.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>Add a new task</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="task1style.css">
 </head>
 <body>
     <div class="sidebar">

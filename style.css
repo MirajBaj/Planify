@@ -14,7 +14,7 @@ body {
   background: #f3f5f2;
   width: 220px;
   border-radius: 20px;
-  margin: 16px 0 16px 16px; /* top right bottom left */
+  margin: 16px 0 16px 16px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
@@ -92,7 +92,7 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 16px 16px 16px 0; /* top right bottom left */
+  padding: 16px 16px 16px 0;
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 32px);
@@ -117,13 +117,11 @@ body {
   grid-template-rows: 1fr 1fr;
   gap: 32px;
   padding: 0;
-  /* Make grid fill remaining space to align with sidebar bottom */
   flex: 1;
   align-content: stretch;
 }
 .my-task-card, .notes-card, .my-task-summary-card {
   margin: 0;
-  /* Ensure cards stretch to fill their grid areas */
   display: flex;
   flex-direction: column;
 }
@@ -133,9 +131,8 @@ body {
   border-radius: 24px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   padding: 32px 28px 28px 28px;
-  min-width: 420px; /* wider for long titles */
+  min-width: 420px;
   margin-left: 32px;
-  /* Remove fixed height to allow stretching */
 }
 .card-header {
   display: flex;
@@ -183,7 +180,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  /* Allow scrolling if content overflows */
   overflow-y: auto;
 }
 .task-item {
@@ -311,7 +307,6 @@ body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   padding: 28px 24px 24px 24px;
   min-width: 320px;
-  /* Remove fixed min-height to allow stretching to match grid */
 }
 
 .high-priority-header {
@@ -339,7 +334,7 @@ body {
   overflow-y: auto;
   padding-right: 4px;
   max-height: 200px;
-  border-radius: 8px; /* Added for rounded corners */
+  border-radius: 8px;
 }
 
 .high-priority-list-divs::-webkit-scrollbar {
@@ -367,7 +362,6 @@ body {
   border-radius: 8px;
 }
 
-/* Green background on hover */
 .high-task-bullet:hover {
   background: #aab8a6;
   border-radius: 12px;
@@ -377,7 +371,7 @@ body {
   display: flex;
   align-items: center;
   flex: 1;
-  pointer-events: none; /* Prevent clicking on task content */
+  pointer-events: none;
 }
 
 .task-actions {
@@ -386,7 +380,6 @@ body {
   flex-shrink: 0;
 }
 
-/* Enhanced hover effect for high priority task bullets */
 .high-task-bullet:hover .bullet-icon {
   transform: translateY(-2px);
   color: #c0392b;
@@ -411,7 +404,6 @@ body {
   flex: 1;
 }
 
-/* Enhanced delete cross icon for high priority tasks */
 .task-delete {
   font-size: 1.2rem;
   color: #000000;
@@ -427,31 +419,27 @@ body {
   width: 24px;
   height: 24px;
   background: transparent;
-  pointer-events: auto; /* Ensure delete icon is clickable */
+  pointer-events: auto;
   font-weight: bold;
   user-select: none;
 }
 
-/* Show delete icon on hover with enhanced animation */
 .high-task-bullet:hover .task-delete {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Enhanced hover effect for delete icon */
 .task-delete:hover {
   color: #b13131 !important;
   transform: scale(1.4) !important;
   font-size: 1.4rem;
 }
 
-/* Active/click effect for delete icon */
 .task-delete:active {
   transform: scale(1.1) !important;
   box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
 }
 
-/* Subtle animation for task removal */
 .high-task-bullet.removing {
   opacity: 0;
   transform: translateX(-20px);
@@ -467,7 +455,6 @@ body {
   text-decoration: line-through;
 }
 
-/* Ensure completed tasks don't have the hover pop effect */
 .high-task-bullet.completed:hover .bullet-icon {
   transform: none;
   font-size: 1.5rem;
@@ -482,7 +469,6 @@ body {
   font-style: italic;
 }
 
-/* Form Styles for Add Task Page */
 .form-card {
   background: #f3f5f2;
   border-radius: 24px;
@@ -528,7 +514,7 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #2b7a4b;
+  border-color: #8ebf84;
   box-shadow: 0 0 0 3px rgba(43, 122, 75, 0.1);
 }
 
@@ -548,8 +534,8 @@ body {
 .btn-secondary {
   padding: 12px 24px;
   border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 600px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s;
@@ -619,52 +605,51 @@ body {
   text-align: center;
 }
 
-/* Add Note Form Styling */
 .add-note-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 2vh;
   width: 100%;
 }
 
 .page-title {
-  font-size: 2.8rem;
+  font-size: 4vh;
   color: #111;
-  margin: 0 0 32px 0;
+  margin: 0 0 4vh 0;
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-shadow: 0 0.3vh 1vh rgba(0,0,0,0.08);
   text-align: center;
 }
 
 .note-form-card {
   background: #f3f5f2;
-  border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  padding: 40px 32px;
-  margin-bottom: 32px;
+  border-radius: 3vh;
+  box-shadow: 0 0.5vh 2vh rgba(0,0,0,0.08);
+  padding: 5vh 4vh;
+  margin-bottom: 4vh;
   width: 100%;
   max-width: none;
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: 3vh;
 }
 
 .form-label {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1.5vh;
   font-weight: 600;
   color: #222;
-  margin-bottom: 8px;
+  margin-bottom: 1vh;
 }
 
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 16px 18px;
-  border: 2px solid #e0e7de;
-  border-radius: 16px;
-  font-size: 1rem;
+  padding: 2vh 2.5vh;
+  border: 0.3vh solid #e0e7de;
+  border-radius: 2vh;
+  font-size: 1.4vh;
   font-family: 'Montserrat', Arial, sans-serif;
   color: #222;
   background: #fff;
@@ -675,8 +660,8 @@ body {
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #8ebf84;;
-  box-shadow: 0 0 0 3px rgba(43, 122, 75, 0.1);
+  border-color: #8ebf84;
+  box-shadow: 0 0 0 0.4vh rgba(43, 122, 75, 0.1);
 }
 
 .form-input::placeholder,
@@ -686,31 +671,31 @@ body {
 
 .form-textarea {
   resize: vertical;
-  min-height: 140px;
+  min-height: 14vh;
   line-height: 1.5;
 }
 
 .form-buttons {
   display: flex;
-  gap: 16px;
+  gap: 2vh;
   justify-content: flex-end;
-  margin-top: 32px;
+  margin-top: 4vh;
 }
 
 .btn {
-  padding: 14px 28px;
+  padding: 2vh 4vh;
   border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  border-radius: 1.5vh;
+  font-size: 1.8vh;
   font-weight: 600;
   font-family: 'Montserrat', Arial, sans-serif;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.1s;
-  min-width: 120px;
+  min-width: 16vh;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-0.1vh);
 }
 
 .btn:active {
@@ -736,44 +721,43 @@ body {
   color: #111;
 }
 
-/* Responsive Design */
 @media (max-width: 800px) {
   .add-note-container {
     padding: 0;
   }
   
   .page-title {
-    font-size: 2.2rem;
-    margin-bottom: 24px;
+    font-size: 3vh;
+    margin-bottom: 3vh;
   }
   
   .note-form-card {
-    padding: 28px 20px;
-    border-radius: 16px;
+    padding: 3vh 2vh;
+    border-radius: 2vh;
   }
   
   .form-buttons {
     flex-direction: column-reverse;
-    gap: 12px;
+    gap: 1.5vh;
   }
   
   .btn {
     width: 100%;
-    padding: 16px 24px;
+    padding: 2vh 3vh;
   }
 }
 
 @media (max-width: 480px) {
   .page-title {
-    font-size: 1.8rem;
+    font-size: 2vh;
   }
   
   .note-form-card {
-    padding: 24px 16px;
+    padding: 2vh 1vh;
   }
   
   .form-input,
   .form-textarea {
-    padding: 14px 16px;
+    padding: 1.5vh 1.5vh;
   }
 }

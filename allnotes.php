@@ -45,7 +45,6 @@ $notes = $notes_stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="menu">
         <a href="tempmain.php" class="menu-item"><span class="nav-icon">&#9632</span> Dashboard</a>
-        <a href="#" class="menu-item"><span class="nav-icon">&#128100;</span> User Profile</a>
         <a href="newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> All Task</a>
         <a href="allnotes.php" class="menu-item active"><span class="nav-icon">&#128221;</span> All Notes</a>
       </div>

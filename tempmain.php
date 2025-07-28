@@ -121,8 +121,8 @@ $username = $user_stmt->fetchColumn();
       </div>
       <div class="menu">
         <a href="tempmain.php" class="menu-item <?php echo $filter === 'all' ? 'active' : ''; ?>"><span class="nav-icon">&#9632</span> Dashboard</a>
-        <a href="#" class="menu-item"><span class="nav-icon">&#128100;</span> User Profile</a>
-        <a href="./Task/addnote.php" class="menu-item"><span class="nav-icon">&#43;</span> My Notes</a>
+        <a href="alltasks" class="menu-item"><span class="nav-icon">&#128100;</span> All Task</a>
+        <a href="allnotes.php" class="menu-item"><span class="nav-icon">&#43;</span> All Notes</a>
       </div>
       <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>

@@ -10,22 +10,15 @@
 </head>
 <body>
     <div class="sidebar">
-        <div>
-        <div class="logo">
-        <img src="planify.png" alt="Planify Logo" style="width:100px; display:block; margin: 0 auto 10px auto;">
+      <div class="logo">
+        <img src="planify.png" alt="Planify Logo" style="width:150px; display:block; margin: 0 auto 10px auto;">
       </div>
-            <nav>
-                <ul>
-                    <li><span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>Dashboard</span></li>
-                    <li><a href="newTask.php" class="add-task-link"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Task</a></li>
-                    <li><a href="Task/addnote.php" class="menu-item"><span class="nav-icon">&#128221;</span> Add Notes</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="logout">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            Logout
-        </div>
+      <div class="menu">
+        <a href="tempmain.php" class="menu-item"><span class="nav-icon">&#9632</span> Dashboard</a>
+        <a href="alltasks" class="menu-item"><span class="nav-icon">&#128100;</span> All Task</a>
+        <a href="allnotes.php" class="menu-item"><span class="nav-icon">&#43;</span> All Notes</a>
+      </div>
+      <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>
     <div class="main-content">
         <div class="main-title">Add a new task</div>

@@ -24,6 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <a href="../tempmain.php" class="menu-item"><span class="nav-icon">&#9632;</span> Dashboard</a>
       <a href="../newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> All Task</a>
       <a href="../allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
+      
     </div>
     <a href="../logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
   </div>

@@ -87,7 +87,13 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td class="task-title-cell"><?php echo htmlspecialchars($task['title']); ?></td>
                 <td><?php echo htmlspecialchars($task['description']); ?></td>
                 <td class="task-category"><?php echo htmlspecialchars($categories[$task['category_id']] ?? 'Uncategorized'); ?></td>
-                <td><span class="task-status <?php echo htmlspecialchars($task['priority']); ?>"><?php echo htmlspecialchars($task['status']); ?></span></td>
+                <td>
+  <?php if (isset($task['is_completed']) && $task['is_completed'] == 1): ?>
+    <span class="task-status" style="background:#256029;">Completed</span>
+  <?php else: ?>
+    <span class="task-status <?php echo htmlspecialchars($task['priority']); ?>"><?php echo htmlspecialchars($task['status']); ?></span>
+  <?php endif; ?>
+</td>
                 <td><?php echo date('d M, Y', strtotime($task['created_at'])); ?></td>
                 <td>
                   <form method="post" style="display:inline;">

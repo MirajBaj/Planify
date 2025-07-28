@@ -5,6 +5,16 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 $user_id = $_SESSION['user_id'];
+
+// Handle note deletion
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_note_id'])) {
+    $delete_id = intval($_POST['delete_note_id']);
+    $del_stmt = $pdo->prepare("DELETE FROM notes WHERE note_id = ? AND user_id = ?");
+    $del_stmt->execute([$delete_id, $user_id]);
+    header('Location: allnotes.php');
+    exit;
+}
+
 $notes_sql = "SELECT * FROM notes WHERE user_id = ? ORDER BY created_at DESC";
 $notes_stmt = $pdo->prepare($notes_sql);
 $notes_stmt->execute([$user_id]);
@@ -52,6 +62,10 @@ $notes = $notes_stmt->fetchAll(PDO::FETCH_ASSOC);
               <div class="note-title"><?php echo htmlspecialchars($note['title']); ?></div>
               <div class="note-content"><?php echo htmlspecialchars($note['content']); ?></div>
               <div class="note-date"><?php echo date('d M, Y', strtotime($note['created_at'])); ?></div>
+              <form method="post" style="margin-top: 10px;">
+                <input type="hidden" name="delete_note_id" value="<?php echo $note['note_id']; ?>">
+                <button type="submit" style="background: #e74c3c; color: #fff; border: none; padding: 6px 18px; border-radius: 8px; cursor: pointer; font-size: 1rem;">Delete</button>
+              </form>
             </div>
           <?php endforeach; ?>
         <?php endif; ?>

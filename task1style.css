@@ -140,10 +140,10 @@ body {
 }
 
 .main-title {
-  font-size: 2.6rem;
+  font-size: 4vh;
   font-weight: 700;
   color: #111;
-  margin: 24px 0 24px 0;
+  margin: 3vh 0 3vh 0;
   letter-spacing: -1px;
   text-align: left;
   margin-left: 0;
@@ -152,17 +152,17 @@ body {
 
 @media (min-width: 900px) {
   .main-title {
-    margin-left: calc((100vw - 1200px) / 2 + 40px); /* move further right to align with form box */
+    margin-left: calc((100vw - 1200px) / 2 + 5vh);
   }
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 32px);
+  min-height: calc(100vh - 4vh);
   margin-left: 220px;
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 6vh;
+  padding-right: 6vh;
 }
 
 .main-flex {
@@ -170,34 +170,34 @@ body {
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  gap: 48px; /* Increased and unified gap between all divs */
-  max-width: none; /* Allow more width for mid div */
+  gap: 6vh;
+  max-width: none;
   margin: 0 auto;
   height: 100%;
 }
 
 .form-box {
   background: #f6f8f4;
-  border-radius: 24px;
-  padding: 48px 56px 40px 56px; /* More horizontal padding */
+  border-radius: 3vh;
+  padding: 6vh 7vh 5vh 7vh;
   flex: 1.5;
-  max-width: 700px; /* Increased max width */
+  max-width: 700px;
   min-width: 400px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 0.3vh 2vh rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .form-group {
-    margin-bottom: 28px;
+    margin-bottom: 3.5vh;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 1vh;
     font-weight: 600;
-    font-size: 1.15rem;
+    font-size: 1.5vh;
     color: #222;
 }
 
@@ -205,10 +205,10 @@ body {
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    padding: 16px;
-    border: 1.5px solid #bfc8b2;
-    border-radius: 10px;
-    font-size: 1.15rem;
+    padding: 2vh;
+    border: 0.2vh solid #bfc8b2;
+    border-radius: 1.5vh;
+    font-size: 1.4vh;
     background: #fff;
     box-sizing: border-box;
     font-family: inherit;
@@ -219,32 +219,32 @@ body {
 .form-group select:focus {
   outline: none;
   border-color: #8ebf84;
-  box-shadow: 0 0 0 3px rgba(142, 191, 132, 0.15);
+  box-shadow: 0 0 0 0.4vh rgba(142, 191, 132, 0.15);
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 70px;
+    min-height: 8vh;
 }
 
 .form-actions {
     display: flex;
-    gap: 32px;
+    gap: 4vh;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 5vh;
 }
 
 .form-actions button {
   background: #6d9e60;
   color: #fff;
   border: none;
-  padding: 16px 48px;
-  border-radius: 14px;
-  font-size: 1.15rem;
+  padding: 2vh 6vh;
+  border-radius: 2vh;
+  font-size: 1.8vh;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.13);
+  box-shadow: 0 0.3vh 1vh rgba(37, 99, 235, 0.13);
 }
 
 .form-actions button.cancel {
@@ -260,53 +260,53 @@ body {
 .right-cards {
   display: flex;
   flex-direction: column;
-  gap: 48px; /* Match gap with .main-flex */
+  gap: 6vh;
   flex-shrink: 0;
   width: 320px;
   height: 100%;
   justify-content: space-between;
-  margin-right: 48px;
+  margin-right: 6vh;
 }
 
 .right-card {
   background: #f6f8f4;
-  border-radius: 20px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  padding: 32px 32px 28px 32px; /* Increased top and bottom padding */
-  flex: none; /* Changed from flex: 1 1 0 to none for fixed sizing */
-  min-height: 200px; /* Increased minimum height to make cards taller */
+  border-radius: 2.5vh;
+  box-shadow: 0 0.3vh 1.5vh rgba(0,0,0,0.05);
+  padding: 4vh 4vh 3.5vh 4vh;
+  flex: none;
+  min-height: 25vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changed from space-between to flex-start */
+  justify-content: flex-start;
 }
 
 .right-card label {
-    font-size: 1.1rem;
+    font-size: 1.4vh;
     font-weight: 600;
     color: #222;
-    margin-bottom: 12px;
+    margin-bottom: 1.5vh;
     display: block;
 }
 
 .right-card .card-title {
-    font-size: 1.15rem;
+    font-size: 1.5vh;
     font-weight: 700;
-    margin-bottom: 20px; /* Increased margin */
+    margin-bottom: 2.5vh;
     color: #444;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 1vh;
 }
 
 .right-card .card-title svg {
-    width: 18px;
-    height: 18px;
+    width: 2.5vh;
+    height: 2.5vh;
 }
 
 .right-card .radio-group {
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Increased gap between radio options */
+    gap: 2.5vh;
 }
 
 .right-card input[type="radio"] {
@@ -416,27 +416,27 @@ body {
 
 @media (max-width: 1199px) {
     .main-title {
-        font-size: 2.2rem;
-        margin: 40px 40px 20px 40px;
+        font-size: 3vh;
+        margin: 5vh 5vh 2.5vh 5vh;
     }
     
     .main-content {
         margin-left: 0;
-        padding: 0 24px;
+        padding: 0 3vh;
     }
     
     .main-flex {
-        gap: 24px;
-        padding: 0 24px;
+        gap: 3vh;
+        padding: 0 3vh;
     }
     
     .right-cards {
         width: 280px;
-        gap: 24px;
+        gap: 3vh;
     }
     
     .right-card {
-        min-height: 160px; /* Adjusted for medium screens */
+        min-height: 20vh;
     }
 }
 
@@ -468,89 +468,89 @@ body {
     }
     
     .main-title {
-        margin: 24px;
-        font-size: 2rem;
+        margin: 3vh;
+        font-size: 2.5vh;
     }
     
     .main-flex {
         flex-direction: column;
-        gap: 24px;
-        padding: 0 24px;
+        gap: 3vh;
+        padding: 0 3vh;
     }
     
     .right-cards {
         flex-direction: row;
         width: 100%;
-        gap: 24px;
+        gap: 3vh;
         overflow-x: auto;
-        padding-bottom: 24px;
+        padding-bottom: 3vh;
     }
     
     .right-card {
         min-width: 200px;
-        min-height: 140px; /* Adjusted for mobile */
+        min-height: 18vh;
         flex-shrink: 0;
     }
     
     .form-box {
         max-width: 100%;
-        padding: 24px;
+        padding: 3vh;
     }
 }
 
 
 @media (max-width: 767px) {
     .main-title {
-        font-size: 1.8rem;
-        margin: 24px;
+        font-size: 2.2vh;
+        margin: 3vh;
     }
     
     .main-flex {
-        padding: 0 16px;
-        gap: 16px;
+        padding: 0 2vh;
+        gap: 2vh;
     }
     
     .form-box {
-        padding: 16px;
-        border-radius: 16px;
+        padding: 2vh;
+        border-radius: 2vh;
     }
     
     .form-group {
-        margin-bottom: 16px;
+        margin-bottom: 2vh;
     }
     
     .form-group label {
-        font-size: 1rem;
+        font-size: 1.3vh;
     }
     
     .form-group input, .form-group textarea, .form-group select {
-        font-size: 1rem;
-        padding: 12px;
+        font-size: 1.3vh;
+        padding: 1.5vh;
     }
     
     .form-actions {
         flex-direction: column;
-        gap: 16px;
+        gap: 2vh;
     }
     
     .form-actions button {
         width: 100%;
-        padding: 14px 32px;
-        font-size: 1rem;
+        padding: 1.8vh 4vh;
+        font-size: 1.3vh;
     }
     
     .right-cards {
-        gap: 16px;
+        gap: 2vh;
     }
     
     .right-card {
         min-width: 180px;
-        min-height: 120px; /* Adjusted for small screens */
-        padding: 16px;
+        min-height: 15vh;
+        padding: 2vh;
     }
     
     .right-card .card-title {
-        font-size: 1rem;
+        font-size: 1.3vh;
     }
     
     .navbar-brand .brand {
@@ -570,7 +570,7 @@ body {
 
 @media (max-width: 480px) {
     .main-title {
-        font-size: 1.6rem;
+        font-size: 2vh;
     }
     
     .right-cards {
@@ -579,7 +579,7 @@ body {
     
     .right-card {
         min-width: auto;
-        min-height: 140px; /* Maintained minimum height even on smallest screens */
+        min-height: 18vh;
         width: 100%;
     }
     

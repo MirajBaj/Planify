@@ -205,7 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if (successMsg) {
         setTimeout(function() {
           successMsg.style.transition = 'opacity 0.5s';
-          successMsg.style.opacity = '0';
+          successMsg.style.opacity = '0';`
           setTimeout(function() {
             successMsg.style.display = 'none';
           }, 500);

@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="/planify/CSS/sign.css">
+  <link rel="stylesheet" href="CSS/sign.css">
 </head>
 <body>
   <div class="signup-container">
@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <svg id="togglePasswordClosed" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="#888" stroke-width="2" d="M3 3l18 18M10.7 10.7A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88M6.53 6.53C4.06 8.06 2 12 2 12s4 7 10 7c2.03 0 3.87-.5 5.47-1.47M17.47 17.47C19.94 15.94 22 12 22 12s-4-7-10-7c-1.13 0-2.22.13-3.24.37"/><circle cx="12" cy="12" r="3" stroke="#888" stroke-width="2"/></svg>
           </span>
         </div>
-        <div class="password-requirements" id="passwordRequirements" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background-color: #f8f9fa; border-radius: 4px; border-left: 3px solid #007bff;">
+        <div class="password-requirements" id="passwordRequirements" style="display: none; margin-top: 0.5rem; padding: 0.75rem; background-color: #f8f9fa; border-radius: 4px; border-left: 3px solid #8ebf84;;">
           <div class="requirements-title" style="font-weight: 600; margin-bottom: 0.5rem; color: #333;">Password Requirements:</div>
           <div class="requirement" id="lengthReq" style="display: flex; align-items: center; margin: 0.25rem 0; font-size: 0.85rem;">
             <span class="requirement-icon" style="width: 16px; height: 16px; border-radius: 50%; margin-right: 0.5rem; display: inline-block; background-color: #dc3545;">✗</span>

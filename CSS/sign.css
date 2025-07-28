@@ -70,13 +70,13 @@ body {
   transition: border 0.2s;
 }
 .signup-input:focus {
-  border-color: #4285f4;
+  border-color: #8ebf84;
 }
 .signup-btn {
   margin: 0.5rem auto 0;
   width: 60%;
   height: 3rem;
-  background: #8AAF80;
+  background: #6d9e60;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
@@ -90,7 +90,7 @@ body {
   letter-spacing: 0.15em;
 }
 .signup-btn:hover {
-  background: #7ca06d;
+  background: #8ebf84;
   height: 3.2rem;
 }
 .signup-footer {
@@ -108,14 +108,14 @@ body {
 .login-link {
   font-size: large;
   flex-wrap: wrap;
-  color: #3576e7;
+  color:#6d9e60;
   text-decoration: none;
   font-weight: 600;
   margin-left: 0.3rem;
   transition: color 0.2s;
 }
 .login-link:hover {
-  color: #174ea6;
+  color: #8ebf84;
   text-decoration: underline;
 }
 .error {

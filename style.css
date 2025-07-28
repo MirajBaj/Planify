@@ -287,32 +287,161 @@ body {
   color: #222;
 }
 
-@media (max-width: 1100px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+/* Add Note Form Styling */
+.add-note-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  color: #111;
+  margin: 0 0 32px 0;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.note-form-card {
+  background: #f3f5f2;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 40px 32px;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: none;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid #e0e7de;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #222;
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #8ebf84;;
+  box-shadow: 0 0 0 3px rgba(43, 122, 75, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #b0b0b0;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.5;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Montserrat', Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  min-width: 120px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: #6d9e60;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #8ebf84;;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #222;
+}
+
+.btn-secondary:hover {
+  background: #e5e7eb;
+  color: #111;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .add-note-container {
+    padding: 0;
   }
-  .my-task-card, .notes-card, .my-task-summary-card {
-    min-width: unset;
+  
+  .page-title {
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+  }
+  
+  .note-form-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  
+  .form-buttons {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 16px 24px;
   }
 }
 
-@media (max-width: 800px) {
-  .container {
-    flex-direction: column;
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
   }
-  .sidebar {
-    width: 100%;
-    margin: 0 0 16px 0;
-    border-radius: 0 0 24px 24px;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 16px 0;
+  
+  .note-form-card {
+    padding: 24px 16px;
   }
-  .main-content {
-    padding: 16px;
-  }
-  .dashboard-grid {
-    gap: 16px;
+  
+  .form-input,
+  .form-textarea {
+    padding: 14px 16px;
   }
 }

@@ -14,6 +14,15 @@ $categories = [
     3 => 'Personal'
 ];
 
+// Handle task deletion
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_task_id'])) {
+    $delete_id = intval($_POST['delete_task_id']);
+    $del_stmt = $pdo->prepare("DELETE FROM tasks WHERE task_id = ? AND user_id = ?");
+    $del_stmt->execute([$delete_id, $user_id]);
+    header('Location: alltasks.php');
+    exit;
+}
+
 // Fetch all tasks
 $sql = "SELECT * FROM tasks WHERE user_id = ? ORDER BY created_at DESC";
 $stmt = $pdo->prepare($sql);
@@ -50,9 +59,9 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="menu">
         <a href="tempmain.php" class="menu-item"><span class="nav-icon">&#9632</span> Dashboard</a>
-        <a href="newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> All Task</a>
-        <a href="allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
         <a href="alltasks.php" class="menu-item active"><span class="nav-icon">&#128196;</span> All Tasks</a>
+        <a href="allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
+        
       </div>
       <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>
@@ -66,6 +75,7 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Category</th>
             <th>Status</th>
             <th>Created At</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -79,6 +89,14 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td class="task-category"><?php echo htmlspecialchars($categories[$task['category_id']] ?? 'Uncategorized'); ?></td>
                 <td><span class="task-status <?php echo htmlspecialchars($task['priority']); ?>"><?php echo htmlspecialchars($task['status']); ?></span></td>
                 <td><?php echo date('d M, Y', strtotime($task['created_at'])); ?></td>
+                <td>
+                  <form method="post" style="display:inline;">
+                    <input type="hidden" name="delete_task_id" value="<?php echo $task['task_id']; ?>">
+                    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+                      <img src="dustbin.png" alt="Delete" style="width: 26px; height: 26px; vertical-align: middle;" />
+                    </button>
+                  </form>
+                </td>
               </tr>
             <?php endforeach; ?>
           <?php endif; ?>

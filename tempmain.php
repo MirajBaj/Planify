@@ -82,7 +82,7 @@ $username = $user_data['username'] ?? 'User';
       </div>
       <div class="menu">
         <a href="tempmain.php" class="menu-item active"><span class="nav-icon">&#9632</span> Dashboard</a>
-        <a href="newTask.php" class="menu-item"><span class="nav-icon">&#43;</span> All Task</a>
+        <a href="alltasks.php" class="menu-item"><span class="nav-icon">&#128196;</span> All Task</a>
         <a href="allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
       </div>
       <a href="logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
@@ -101,7 +101,7 @@ $username = $user_data['username'] ?? 'User';
         <div class="my-task-card">
           <div class="card-header">
             <span class="card-title">My Task</span>
-            <span class="card-add">+</span>
+            <a href="newTask.php" class="card-add">+</a>
           </div>
           <div class="task-filters">
             <a href="?filter=all<?php echo $current_page > 1 ? '&page=' . $current_page : ''; ?>" class="filter-btn <?php echo $filter === 'all' ? 'active' : ''; ?>">All</a>

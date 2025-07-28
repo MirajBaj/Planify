@@ -77,24 +77,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 if ($user && password_verify($password, $user['password'])) {
-                    // Authentication successful
                     $_SESSION["loggedin"] = true;
                     $_SESSION["user_id"] = $user['user_id'];
                     $_SESSION["username"] = $user['username'];
                     $_SESSION["email"] = $user['email'];
-                    //$_SESSION["role"] = $user['role'] ?? 'user'; // Default role if not set
                     $_SESSION["login_time"] = time();
-                    
-                    // Clear failed login attempts
                     unset($_SESSION['login_attempts']);
-                    
-                    // Log successful login (optional)
                     error_log("Successful login for user: " . $user['email'] . " from IP: " . $ip_address);
-                    
-                    // Redirect to dashboard or intended page
+
+                    // Special admin redirect
+                    if ($email === 'admin@gmail.com' && $password === 'Admin123!') {
+                        header("Location: admin.php");
+                        exit;
+                    }
+
                     $redirect_url = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : 'tempmain.php';
                     unset($_SESSION['redirect_after_login']);
-                    
                     header("Location: " . $redirect_url);
                     exit;
                 } else {

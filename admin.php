@@ -17,7 +17,7 @@
       <div class="menu">
         <a href="#" class="menu-item"> <span style="margin-right:8px;">&#9632;</span> Dashboard</a>
       </div>
-      <a href="#" class="logout"> <span style="margin-right:8px;">&#x21B6;</span> Logout</a>
+      <a href="sign.php" class="logout"> <span style="margin-right:8px;">&#x21B6;</span> Logout</a>
     </div>
     <div class="main-content">
       <h1>User Management</h1>

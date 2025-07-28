@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(120deg, #ede7f6 0%, #d1c4e9 100%);
+            background: #c9d6cb;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -40,20 +40,20 @@
         .landing-headline {
             font-size: 2.8rem;
             font-weight: 800;
-            color: #4b2996;
+            color: #256029;
             margin-bottom: 24px;
             line-height: 1.1;
         }
         .landing-subheading {
             font-size: 1.1rem;
-            color: #5e548e;
+            color: #4b5e4a;
             margin-bottom: 36px;
             font-weight: 500;
             max-width: 420px;
         }
         .cta-btn {
             display: inline-block;
-            background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+            background: linear-gradient(90deg, #2563eb 0%, #2b7a4b 100%);
             color: #fff;
             font-size: 1.1rem;
             font-weight: 700;
@@ -65,7 +65,7 @@
             box-shadow: 0 2px 8px rgba(44, 62, 80, 0.10);
         }
         .cta-btn:hover {
-            background: linear-gradient(90deg, #fc5c7d 0%, #6a82fb 100%);
+            background: linear-gradient(90deg, #2b7a4b 0%, #2563eb 100%);
             box-shadow: 0 4px 16px rgba(44, 62, 80, 0.18);
         }
         .landing-right {
@@ -78,16 +78,14 @@
         }
         .image-placeholder {
             width: 340px;
-            height: 480px;
-            background: #e0d7f3;
+            height: 280px;
+            background: #f3f5f2;
             border-radius: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #b39ddb;
-            font-size: 1.2rem;
-            font-weight: 600;
             box-shadow: 0 8px 32px rgba(44, 62, 80, 0.10);
+            padding: 0;
         }
         @media (max-width: 900px) {
             .landing-main {
@@ -121,7 +119,22 @@
             <a href="login.php" class="cta-btn">Get Started</a>
         </div>
         <div class="landing-right">
-            <div class="image-placeholder">[Your image here soon]</div>
+            <div class="image-placeholder">
+                <!-- Free SVG illustration of a laptop with notes -->
+                <svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="30" y="40" width="160" height="90" rx="10" fill="#c9d6cb" stroke="#bfc8b2" stroke-width="3"/>
+                  <rect x="50" y="60" width="120" height="50" rx="6" fill="#fff" stroke="#bfc8b2" stroke-width="2"/>
+                  <rect x="60" y="70" width="100" height="10" rx="3" fill="#e0e7de"/>
+                  <rect x="60" y="85" width="60" height="8" rx="2" fill="#b7d2c2"/>
+                  <rect x="60" y="98" width="80" height="7" rx="2" fill="#dedede"/>
+                  <rect x="80" y="120" width="60" height="8" rx="2" fill="#bfa46f"/>
+                  <rect x="100" y="135" width="20" height="6" rx="2" fill="#e74c3c"/>
+                  <rect x="30" y="130" width="160" height="18" rx="6" fill="#bfc8b2"/>
+                  <rect x="60" y="135" width="100" height="8" rx="3" fill="#f3f5f2"/>
+                  <rect x="90" y="150" width="40" height="10" rx="3" fill="#2563eb"/>
+                  <rect x="80" y="160" width="60" height="8" rx="3" fill="#2b7a4b"/>
+                </svg>
+            </div>
         </div>
     </div>
 </body>

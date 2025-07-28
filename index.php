@@ -17,21 +17,62 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
+        
+        .signup-btn {
+            position: fixed;
+            top: 2vh;
+            right: 3vh;
+            background: #6d9e60;
+            color: #fff;
+            font-size: 1.8vh;
+            font-weight: 600;
+            padding: 1.5vh 3vh;
+            border: none;
+            border-radius: 2.5vh;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 0.3vh 1vh rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        
+        .signup-btn:hover {
+            background: #8ebf84;
+            transform: translateY(-0.1vh);
+        }
+        
+        .signup-btn:active {
+            transform: translateY(0);
+        }
+        
+        .top-logo {
+            position: fixed;
+            top: 2vh;
+            left: 1vh;
+            z-index: 1000;
+        }
+        
+        .top-logo img {
+            width: 12vh;
+            height: auto;
+        }
+        
         .landing-main {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 100vw;
             min-height: 100vh;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 60px;
             box-sizing: border-box;
         }
         .landing-left {
-            flex: 1 1 0;
-            max-width: 540px;
+            flex: 0 0 auto;
+            max-width: 450px;
+            margin-right: 80px;
         }
         .landing-logo {
             width: 100px;
@@ -45,11 +86,13 @@
             line-height: 1.1;
         }
         .landing-subheading {
-            font-size: 1.1rem;
+            font-size: 2vh;
             color: #4b5e4a;
-            margin-bottom: 36px;
+            margin-bottom: 4.5vh;
             font-weight: 500;
             max-width: 420px;
+            line-height: 1.7;
+            text-align: justify;
         }
         .cta-btn {
             display: inline-block;
@@ -90,10 +133,37 @@
         @media (max-width: 900px) {
             .landing-main {
                 flex-direction: column;
-                padding: 30px 5px;
+                padding: 30px 20px;
+                justify-content: center;
+                max-width: 100%;
+            }
+            .landing-left {
+                margin-right: 0;
+                max-width: 100%;
+                margin-bottom: 40px;
             }
             .landing-right {
                 margin-top: 32px;
+            }
+            .landing-subheading {
+                text-align: left;
+                font-size: 1.8vh;
+                margin-bottom: 4vh;
+                max-width: 100%;
+            }
+            .signup-btn {
+                font-size: 2vh;
+                padding: 1.8vh 3.5vh;
+                top: 1.5vh;
+                right: 2vh;
+                border-radius: 3vh;
+            }
+            .top-logo {
+                top: 1.5vh;
+                left: 0.8vh;
+            }
+            .top-logo img {
+                width: 10vh;
             }
         }
         @media (max-width: 600px) {
@@ -105,37 +175,46 @@
                 height: 180px;
                 font-size: 1rem;
             }
+            .landing-subheading {
+                font-size: 1.6vh;
+                max-width: 100%;
+                margin-bottom: 3.5vh;
+            }
+            .signup-btn {
+                font-size: 2.2vh;
+                padding: 2vh 4vh;
+                top: 1vh;
+                right: 1.5vh;
+                border-radius: 3.5vh;
+            }
+            .top-logo {
+                top: 1vh;
+                left: 0.5vh;
+            }
+            .top-logo img {
+                width: 8vh;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="top-logo">
+        <img src="planify.png" alt="Planify Logo">
+    </div>
+    <a href="sign.php" class="signup-btn">Sign Up</a>
     <div class="landing-main">
         <div class="landing-left">
-            <img src="planify.png" alt="Planify Logo" class="landing-logo">
             <div class="landing-headline">Never worry<br>about forgetting<br>things again</div>
             <div class="landing-subheading">
-                Keep your work on track and your team involved with a simple & visual task management tool. This is the combo to-do list app/task manager that you may be searching for. Planify labels items as today, tomorrow, and upcoming.
+            Welcome to Planify— your simple yet powerful digital companion for managing life's daily chaos. Whether you're a student juggling assignments, a professional handling deadlines, or someone striving for balance, Planify empowers you to stay on top of your tasks with clarity and confidence. With intuitive design, category-based organization, and anywhere-access, Planify turns your goals into actionable steps. Say goodbye to stress, forgetfulness, and clutter. Say hello to a more productive, focused, and fulfilled you.
             </div>
             <a href="login.php" class="cta-btn">Get Started</a>
         </div>
         <div class="landing-right">
             <div class="image-placeholder">
-                <!-- Free SVG illustration of a laptop with notes -->
-                <svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="30" y="40" width="160" height="90" rx="10" fill="#c9d6cb" stroke="#bfc8b2" stroke-width="3"/>
-                  <rect x="50" y="60" width="120" height="50" rx="6" fill="#fff" stroke="#bfc8b2" stroke-width="2"/>
-                  <rect x="60" y="70" width="100" height="10" rx="3" fill="#e0e7de"/>
-                  <rect x="60" y="85" width="60" height="8" rx="2" fill="#b7d2c2"/>
-                  <rect x="60" y="98" width="80" height="7" rx="2" fill="#dedede"/>
-                  <rect x="80" y="120" width="60" height="8" rx="2" fill="#bfa46f"/>
-                  <rect x="100" y="135" width="20" height="6" rx="2" fill="#e74c3c"/>
-                  <rect x="30" y="130" width="160" height="18" rx="6" fill="#bfc8b2"/>
-                  <rect x="60" y="135" width="100" height="8" rx="3" fill="#f3f5f2"/>
-                  <rect x="90" y="150" width="40" height="10" rx="3" fill="#2563eb"/>
-                  <rect x="80" y="160" width="60" height="8" rx="3" fill="#2b7a4b"/>
-                </svg>
+                <img src="done.jpg" alt="Planify Illustration" style="width: 100%; height: 100%; object-fit: cover; border-radius: 32px;">
             </div>
         </div>
     </div>
 </body>
-</html> 
+</html>

@@ -215,6 +215,12 @@ body {
 .task-priority.medium {
   background: #bfa46f;
 }
+.task-priority.high {
+  background: #e74c3c;
+}
+.task-priority.low {
+  background: #95a5a6;
+}
 .task-priority.personal {
   background: #a59be6;
 }

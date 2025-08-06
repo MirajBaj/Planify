@@ -12,7 +12,8 @@ if (session_status() == PHP_SESSION_NONE) {
   <title>Add a Note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="../style.css?v=<?php echo time(); ?>" />
+  <link rel="stylesheet" href="../addnote.css?v=<?php echo time(); ?>" />
+
 </head>
 <body>
 <div class="container">
@@ -22,22 +23,33 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
     <div class="menu">
       <a href="../tempmain.php" class="menu-item"><span class="nav-icon">&#9632;</span> Dashboard</a>
-      <a href="../alltasks.php" class="menu-item"><span class="nav-icon">&#128196;</span> All Task</a>
-      <a href="../allnotes.php" class="menu-item"><span class="nav-icon">&#128221;</span> All Notes</a>
+      <a href="../alltasks.php" class="menu-item"><span class="nav-icon">&#128196;</span> All Tasks</a>
+      <a href="../allnotes.php" class="menu-item active"><span class="nav-icon">&#128221;</span> All Notes</a>
     </div>
     <a href="../logout.php" class="logout"><span style="margin-right:8px;">&#x21B6;</span> Logout</a>
   </div>
+  
   <div class="main-content">
-    <h1>Add a Note</h1>
-    <div style="background: #fff; padding: 32px; border-radius: 16px; width: 600px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
-      <form id="noteForm">
-        <label style="font-size: 1.2rem; margin-bottom: 8px;">Note Title</label><br />
-        <input type="text" id="title" required style="width: 100%; padding: 14px; margin-bottom: 18px; font-size: 1.1rem; border-radius: 8px; border: 1px solid #ccc;" /><br />
-        <label style="font-size: 1.2rem; margin-bottom: 8px;">Note Content</label><br/>
-        <textarea id="description" rows="7" style="width: 100%; padding: 14px; font-size: 1.05rem; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 18px;"></textarea><br />
-        <button type="submit" style="background: #4a90e2; color: white; margin-top: 10px; font-size: 1.1rem; padding: 12px 32px; border-radius: 8px;">Save Note</button>
-        <button type="button" onclick="document.getElementById('noteForm').reset();" style="background: gray; color: white; margin-left: 16px; font-size: 1.1rem; padding: 12px 32px; border-radius: 8px;">Cancel</button>
-      </form>
+    <div class="add-note-container">
+      <h1 class="page-title">Add a Note</h1>
+      <div class="note-form-card">
+        <form id="noteForm">
+          <div class="form-group">
+            <label for="title" class="form-label">Note Title</label>
+            <input type="text" id="title" class="form-input" required placeholder="Enter note title..." />
+          </div>
+          
+          <div class="form-group">
+            <label for="description" class="form-label">Note Content</label>
+            <textarea id="description" class="form-textarea" rows="7" placeholder="Write your note content here..."></textarea>
+          </div>
+          
+          <div class="form-buttons">
+            <button type="submit" class="btn btn-primary">Save Note</button>
+            <button type="button" class="btn btn-secondary" onclick="document.getElementById('noteForm').reset();">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -47,6 +59,11 @@ if (session_status() == PHP_SESSION_NONE) {
     e.preventDefault();
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
+
+    if (!title.trim()) {
+      alert('Please enter a note title');
+      return;
+    }
 
     axios.post('http://localhost/planify/Task/note.php', {
       title,

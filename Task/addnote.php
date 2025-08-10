@@ -10,18 +10,20 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
   <meta charset="UTF-8" />
   <title>Add a Note</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="../style.css?v=<?php echo time(); ?>" />
   <link rel="stylesheet" href="../addnote.css?v=<?php echo time(); ?>" />
 
 </head>
 <body>
 <div class="container">
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="menu">☰ Menu</button>
     <div class="logo">
       <img src="../planify.png" alt="Planify Logo" style="width:150px; display:block; margin: 0 auto 10px auto;" />
     </div>
-    <div class="menu">
+    <div class="menu" id="menu">
       <a href="../tempmain.php" class="menu-item"><span class="nav-icon">&#9632;</span> Dashboard</a>
       <a href="../alltasks.php" class="menu-item"><span class="nav-icon">&#128196;</span> All Tasks</a>
       <a href="../allnotes.php" class="menu-item active"><span class="nav-icon">&#128221;</span> All Notes</a>
@@ -54,6 +56,19 @@ if (session_status() == PHP_SESSION_NONE) {
   </div>
 </div>
 
+<script>
+  // Mobile nav toggle (same behavior as dashboard)
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var sidebar = document.getElementById('sidebar');
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', function(){
+        var isOpen = sidebar.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  })();
+</script>
 <script>
   document.getElementById('noteForm').addEventListener('submit', function (e) {
     e.preventDefault();
